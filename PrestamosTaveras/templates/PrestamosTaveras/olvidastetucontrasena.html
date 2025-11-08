@@ -1,0 +1,26 @@
+{% extends 'PrestamosTaveras/cabeceraindex.html' %}
+{% load static %}
+    {% block title %}OLVIDASTE TU CONTRASEÑA{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/olvidar-contrasena.png{% endblock %}
+    {% block enlace %}{% endblock %}
+    {% block content %}
+        <div class="contenedor-formulario">
+            <form method="post" enctype="multipart/form-data" id="formulario-olvcon" class="formulario">
+                {% for mensaje in messages %}
+                        <div class="alert-index alert-danger" role="alert">
+                                <span aria-hidden="true">{{ mensaje }}</span>
+                        </div>
+                    {% endfor %}
+                {% csrf_token %}
+                <h2 class="titulo-formulario">Recuperar Contraseña</h2>
+                <span class="informacion-con">Escribe el correo electr&oacute;nico que utilizaste para registrarte</span>
+                <div class="contenedor-input-index">
+                    <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Correo Electr&oacute;nico" value="" autocomplete="off" class="input">
+                </div>
+                <div class="botones">
+                    <a href="/" class="enlace-regresar">Regresar</a>
+                    <button type="submit" class="boton">Continuar</button>
+                </div>
+            </form>
+        </div>
+    {% endblock %}

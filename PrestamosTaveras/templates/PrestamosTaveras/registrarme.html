@@ -1,0 +1,57 @@
+{% extends 'PrestamosTaveras/cabeceraindex.html' %}
+{% load static %}
+    {% block title %}REGISTRARME{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/registrarme.png{% endblock %}
+    {% block enlace %}{% endblock %}
+        {% block content %}
+            <div class="contenedor-formulario">
+                <form method="post" enctype="multipart/form-data" id="formularioRegistro" class="formulario">
+                    {% for mensaje in messages %}
+                        <div class="alert-index alert-danger" role="alert">
+                                <span aria-hidden="true">{{ mensaje }}</span>
+                        </div>
+                    {% endfor %}
+                    {% csrf_token %}
+                    <h2 class="titulo-formulario">Crear Cuenta</h2>
+                    <div class="contenedor-input">
+                        <input type="text" id="nombre_apellido" name="nombre_apellido" placeholder="Nombre y Apellido" value="" autocomplete="off" class="input">
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="text" id="cedula" name="cedula" maxlength="13" placeholder="C&eacute;dula" value="" autocomplete="off" oninput="guionesCedula(this)" class="input">
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="text" id="telefono" name="telefono" maxlength="12" placeholder="Tel&eacute;fono" value="" autocomplete="off" oninput="guionesTelefono(this)" class="input">
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="text" id="direccion" name="direccion" placeholder="Direcci&oacute;n" value="" autocomplete="off" onfocus="mostrarModal()" class="input">
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Correo Electr&oacute;nico" value="" autocomplete="off" class="input">
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" value="" autocomplete="off" class="input">
+                        <span onclick="mostrar_ocultar('contrasena','icono_mostrar')" class="boton-mostrar-ocultar_"><i id="icono_mostrar" class="fa-solid fa-eye-slash"></i></span>
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="password" id="contrasena_" name="contrasena_" placeholder="Confirmar Contraseña" value="" autocomplete="off" class="input">
+                        <span onclick="mostrar_ocultar_('contrasena_','icono_mostrar_')" class="boton-mostrar-ocultar__"><i id="icono_mostrar_" class="fa-solid fa-eye-slash"></i></span>
+                    </div>
+                    <div class="botones">
+                        <a href="/" class="enlace-regresar">Regresar</a>
+                        <button type="submit" class="boton">Continuar</button>
+                    </div>
+                </form>
+                <div id="modalDireccion" class="modal-direccion">
+                        <form id="modalFormulario">
+                        <input type="text" name="calle" id="calle" placeholder="calle" autocomplete="off" class="input-direccion-modal" autofocus>
+                        <input type="text" name="casa" id="casa" placeholder="casa o apartamento" autocomplete="off" class="input-direccion-modal">
+                        <input type="text" name="sector" id="sector" placeholder="sector" autocomplete="off" class="input-direccion-modal">
+                        <input type="text" name="ciudad" id="ciudad" placeholder="ciudad" autocomplete="off" class="input-direccion-modal">
+                        <div class="boton-modal-centrar">
+                            <button onclick="cerrarModal()" type="button" id="boton_modal" class="boton-modal">Establecer</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="modalOverlay" class="modal-overlay" onclick="cerrarModal()"></div>
+            </div>
+        {% endblock %}

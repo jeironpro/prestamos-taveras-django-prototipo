@@ -1,0 +1,59 @@
+{% extends 'PrestamosTaveras/cabeceraadministrador.html' %}
+{% load static %}
+    {% block content %}
+    {% block title %}C&Eacute;DULAS{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/clientes.png{% endblock %}
+        <div class="contenedor-principal">
+            <h1 class="titulo_admin_clientes">Gesti&oacute;n De C&eacute;dulas <button class="boton-mostrar-modal" onclick="mostrarModal()">Agregar c&eacute;dula</button></h1>
+            <div id="modalCedula" class="modal-cedula">
+                <form method="post" enctype="multipart/form-data" id="modalFormulario">
+                    {% csrf_token %}
+                    <input type="text" id="numero_cedula" name="numero_cedula" maxlength="13" placeholder="N&uacute;mero C&eacute;dula" autocomplete="off" oninput="agregarGuionesCedula(this)" class="input-num-cedula-modal">
+                    <input type="file" name="cedula" id="cedula" class="input-cedula-modal">
+                    <div class="boton-modal-centrar">
+                        <button onclick="cerrarModal()" type="submit" class="boton-cedula-modal">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <div id="modalOverlay" class="modal-overlay" onclick="cerrarModal()"></div>
+            <form action="{% url 'buscador_cedula' %}" id="formulario_buscador_cliente" method="post" enctype="multipart/form-data" class="buscador_cliente">
+                {% csrf_token %}
+                <input type="text" name="buscador_cliente" id="buscador_cliente" oninput="NombreApellidoCedula(this)" placeholder="Nombre y Apellido o C&eacute;dula" autocomplete="off" class="input_buscador">
+                <button type="submit" class="boton_buscador">buscar</button>
+                <button type="button" onclick="nuevaAccion('/admin/cedulas/')" class="boton_recargar">Recargar</button>
+            </form>
+            <div class="contenedor-tabla-clientes">
+                <table class="tabla_clientes">
+                    <thead class="cabecera-clientes">
+                        <tr>
+                            <th class="titulo_clientes">#</th>
+                            <th class="titulo_clientes">Nombre y Apellido</th>
+                            <th class="titulo_clientes">C&eacute;dula</th>
+                            <th class="titulo_clientes">Imagen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if buscador_cedula %}
+                            {% for cliente in buscador_cedula %}
+                            <tr>
+                                <td class="dato_clientes">{{ cliente.id_usuario }}</td>
+                                <td class="dato_clientes">{{ cliente.nombre_apellido }}</td>
+                                <td class="dato_clientes">{{ cliente.cedula }}</td>
+                                <td class="dato_clientes"><img src="{% static 'PrestamosTaveras/img/' %}{{ cliente.imagen_cedula }}" alt="Cedula" class="imagen_cedula_tabla"></td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            {% for cliente in clientes %}
+                            <tr>
+                                <td class="dato_clientes">{{ cliente.id_usuario }}</td>
+                                <td class="dato_clientes">{{ cliente.nombre_apellido }}</td>
+                                <td class="dato_clientes">{{ cliente.cedula }}</td>
+                                <td class="dato_clientes"><img src="{% static 'PrestamosTaveras/img/' %}{{ cliente.imagen_cedula }}" alt="Cedula" class="imagen_cedula_tabla"></td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endblock %}

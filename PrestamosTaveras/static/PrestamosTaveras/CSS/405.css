@@ -1,0 +1,57 @@
+body {
+    background: linear-gradient(to right, #4CAF50, #2E7D32);
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    animation: gradientAnimation 5s infinite alternate;
+}
+
+.contenedor-error {
+    text-align: center;
+    color: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    animation: slideIn 1.5s ease-out;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes FadeInOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

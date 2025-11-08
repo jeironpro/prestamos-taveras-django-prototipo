@@ -1,0 +1,24 @@
+{% extends 'PrestamosTaveras/cabecerainicioprestamos.html' %}
+{% load static %}
+    {% block title %}PAGOS{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/pagos.png{% endblock %}
+    {% block enlace %}<a href="/inicioprestamos/" class="solicitar"><span class="flecha-izquierda"><i class="fa-solid fa-chevron-left"></i></span> Regresar</a>{% endblock %}
+    {% block content %}
+        <div class="card card2">
+            <h3 class="titulo-mis-pagos">Mis Pagos</h3>
+            {% for pago in pagos %}
+                {% if pago.id_pago != 0 %}
+            <div class="pagos-realizados">
+                <div class="pagado">
+                    <p class="monto-pagado">Monto Pagado</p>
+                    <p class="titulo-fecha">Fecha</p>
+                </div>
+                <div class="pagado">
+                    <p class="pago">RD$ {{ pago.monto_pagado }}</p>
+                    <p class="fecha">{{ pago.fecha }}</p>
+                </div>
+            </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endblock %}

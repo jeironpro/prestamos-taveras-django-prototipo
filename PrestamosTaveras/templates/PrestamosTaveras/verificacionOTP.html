@@ -1,0 +1,20 @@
+{% extends 'PrestamosTaveras/cabeceraindex.html' %}
+{% load static %}
+    {% block title %}VERIFICACION OTP{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/otp.png{% endblock %}
+    {% block styles %}<link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/verificacionOTP.css' %}">{% endblock %}
+    {% block enlace %}{% endblock %}
+        {% block content %}
+            <div class="contenedor-formulario">
+                <h2 class="titulo-formulario">Verificaci&oacute;n de Seguridad</h2>
+                <div class="contenedor-opt">
+                    <form action="{% url 'verificacionOTP' %}" method="post" enctype="multipart/form-data" class="formulario-opt">
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <input type="text" id="otp" name="otp" maxlength="6" oninput="soloNumeros(this)" placeholder="codigo de 6 d&iacute;gitos" value="" autocomplete="off" class="otp">
+                        </div>
+                        <button type="submit" class="boton-verificar">Verificar</button>
+                    </form>
+                </div>
+            </div>
+        {% endblock %}

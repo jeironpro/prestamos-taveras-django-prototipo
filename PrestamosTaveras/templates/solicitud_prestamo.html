@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Pr&eacute;stamo</title>
+</head>
+<body>
+    <p>Cliente: {{ cliente }}</p>
+    <p>Cantidad: {{ cantidad }}</p>
+    <p>Cuotas: {{ cuotas }}</p>
+    <p>Monto Cuotas: {{ monto_cuotas }}</p>
+    <p style="display: none;">Usuario: {{ id_usuario }}</p>
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-between;">
+    <button style="background-color:#4CAF50; border:none; border-radius:5px; flex:1; margin-bottom:10px; padding:10px;">
+    <a href="http://127.0.0.1:8000/aprobacionprestamo?id_usuario={{ id_usuario }}&email={{ email }}&cliente={{ cliente }}&cantidad={{ cantidad }}&cuotas={{ cuotas }}&monto={{ monto_cuotas }}" style="color:white; text-decoration:none;">Aprobar</a>
+    
+    <button style="background-color:#F44336; border:none; border-radius:5px; flex:1; margin-left: 10px; margin-bottom:10px; padding:10px; text-decoration:none;">
+    <a href="http://127.0.0.1:8000/denegarprestamo?id_usuario={{ id_usuario }}&email={{ email }}&cliente={{ cliente }}" style="color:white; text-decoration:none;">Denegar</a>
+    </div>
+</body>
+</html>

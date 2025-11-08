@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-DO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}INICIO PRESTAMOS{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% block icon_url %}/static/PrestamosTaveras/ICONS/prestamos.png{% endblock %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/inicioprestamos.css' %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/navegacion-menu.css' %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/mensajes.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .regresar-configuraciones {
+            display: block; 
+            position: absolute; 
+            top: 21%; 
+            color: #000; 
+            text-decoration: 
+            underline;
+            font-weight: 700;
+        }
+
+        .regresar-configuraciones:hover {
+            color: #189300;
+        }
+    </style>
+</head>
+<body>
+    <!-- CSS de navegacion-menu -->
+    <header>
+        <nav class="navegacion contenedor">
+           <div class="navegacion_datos">
+              <a href="/inicioprestamos" class="navegacion_logo">
+                 <img src="{% static 'PrestamosTaveras/ICONS/billete.png' %}" alt="LOGO" class="logo"> 
+                 <h1 class="navegacion_titulo">Pr&eacute;stamos Taveras</h1>
+              </a>
+              <div class="navegacion_botones" id="navegacion-botones">
+                 <i class="fa-solid fa-bars navegacion_burger"></i>
+                 <i class="fa-solid fa-x navegacion_cerrar"></i>
+              </div>
+            </div>
+            {% for mensaje in messages %}
+                <div class="alert alert-danger ipres" role="alert">
+                    <span aria-hidden="true">{{ mensaje }}</span>
+                </div>
+            {% endfor %}
+           <div class="navegacion_menu" id="navegacion-menu">
+               <ul class="navegacion_lista">
+                 <li><a href="/misdatos/" class="navegacion_enlace">Mis Datos</a></li>
+                 <li><a href="/pagos/" class="navegacion_enlace">Pagos</a></li>
+                 <li><a href="/configuraciones/" class="navegacion_enlace">Configuraciones</a></li>
+                 <li><a href="/cerrar_sesion/" class="navegacion_enlace">Salir</a></li>
+              </ul>
+           </div>
+        </nav>
+     </header>
+    <!-- CSS de inicioprestamos -->
+    <main>
+        <div class="cards">
+            <div class="card card1">
+                {% for usuario in usuario %}
+                <h1 class="usuario">¡Hola {{ usuario.nombre_apellido }}!</h1>
+                {% endfor %}
+                <div class="contenedor-tarjeta">
+                    <div class="tarjeta" id="tarjeta">
+                        <div class="delantera">
+                            <div class="p-activo">Pr&eacute;stamo Activo 
+                                {% if not prestamo %}
+                                <span class="cantidad">NO</span>
+                                {% else %}
+                                {% for prestamo in prestamo %}
+                                <span class="cantidad-pa">RD$ {{ prestamo.cantidad_prestada }}</span>
+                                {% endfor %}
+                                {% endif %}
+                                <img src="{% static 'PrestamosTaveras/ICONS/chip-tarjeta.png' %}" class="chip" alt="CHIP">
+                            </div>
+                            <div class="items-card">
+                                <p class="monto-c">Monto De Cuota
+                                    {% if not prestamo %}
+                                    <span class="cantidad">RD$ 0</span>
+                                    {% else %}
+                                    {% for prestamo in prestamo %}
+                                    <span class="cantidad">RD$ {{ prestamo.monto_cuotas }}</span>
+                                    {% endfor %} 
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="items-card">
+                                <p class="cuotas-pa">Cuotas Por Pagar 
+                                    {% if not prestamo %}
+                                    <span class="cantidad">0 / 0</span>
+                                    {% else %}
+                                    {% for prestamo in prestamo %}
+                                    <span class="cantidad"> {{ cuotas_pagadas }} / {{ prestamo.cuotas }}</span>
+                                    {% endfor %}
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="items-card">
+                                <p class="total-pa">Total A Pagar 
+                                    {% if not prestamo %}
+                                    <span class="cantidad">RD$ 0</span>
+                                    {% else %}
+                                    {% for prestamo in prestamo %}
+                                    <span class="cantidad">RD$ {{ prestamo.total_pagar }}</span>
+                                    {% endfor %}
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="items-card">
+                                <p class="total-pa">Restante Por Pagar 
+                                    {% if not prestamo %}
+                                    <span class="cantidad">RD$ 0</span>
+                                    {% else %}
+                                    <span class="cantidad">RD$ {{ restante_pagar }}</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <img src="{% static 'PrestamosTaveras/ICONS/dinero.png' %}" alt="LOGO" class="logo-tarjeta">
+                        </div>
+                        <div class="trasera">
+                            <p class="leyenda">
+                                <img src="{% static 'PrestamosTaveras/ICONS/billete.png' %}" alt="LOGO" class="logo-tarjeta-trasera">
+                                Pr&eacute;stamos Taveras
+                            </p>
+                        </div>
+                    </div>
+                    {% block enlace %}
+                        {% if prestamo %}
+                        <p class="solicitar">Pr&eacute;stamo Activo</p>
+                        {% else %}
+                        <a href="/solicitarprestamo/" class="solicitar">Solicitar Un Pr&eacute;stamo <span class="flecha-derecha"><i class="fa-solid fa-chevron-right"></i></span></a>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            </div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </main>
+    <script src="{% static 'PrestamosTaveras/JS/scriptinicioprestamos.js' %}"></script>
+    <script src="{% static 'PrestamosTaveras/JS/navegacion-menu.js' %}"></script>
+    <script src="{% static 'PrestamosTaveras/JS/tarjeta.js' %}"></script>
+    <script src="https://kit.fontawesome.com/25da21ab57.js" crossorigin="anonymous"></script>
+</body>
+</html>

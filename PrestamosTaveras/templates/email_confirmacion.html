@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Correo</title>
+</head>
+<body>
+    <p>Hola {{ name }}!!!</p>
+
+    <p>
+        Por favor, confirma tu correo electr&oacute;nico haciendo click en el siguiente enlace.
+    </p>
+
+    <p>
+        Confirmar tu registro haciendo click en este enlace: <a href="http://{{ domain }}{% url 'activador' uidb64=uid token=token %}">Confirmacion</a>
+    </p>
+
+    <p>
+        Si no te has registrado utiliza este enlace para eliminar el registro: <a href="http://{{ domain }}{% url 'eliminarregistro' uidb64=uid token=token %}">Eliminar Registro</a>
+    </p>
+
+    <p>Pr&eacute;stamos Taveras</p>
+</body>
+</html>

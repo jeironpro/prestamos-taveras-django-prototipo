@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-DO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}ADMINISTRADOR{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/administrador.png{% endblock %}
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/navegacion-menu.css' %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/mensajes.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- CSS de navegacion-menu -->
+    <header>
+        <nav class="navegacion contenedor">
+           <div class="navegacion_datos">
+              <a href="/admin/" class="navegacion_logo">
+                 <img src="{% static 'PrestamosTaveras/ICONS/billete.png' %}" alt="LOGO" class="logo"> 
+                 <h1 class="navegacion_titulo">Pr&eacute;stamos Taveras</h1>
+              </a>
+              <div class="navegacion_botones" id="navegacion-botones">
+                 <i class="fa-solid fa-bars navegacion_burger"></i>
+                 <i class="fa-solid fa-x navegacion_cerrar"></i>
+              </div>
+           </div>
+           {% for mensaje in messages %}
+                <div class="alert alert-danger ipres" role="alert">
+                    <span aria-hidden="true">{{ mensaje }}</span>
+                </div>
+            {% endfor %}
+           <div class="navegacion_menu" id="navegacion-menu">
+              <ul class="navegacion_lista">
+                 <li><a href="/admin/pagosadministrador" class="navegacion_enlace">Pagos</a></li>
+                 <li><a href="/admin/clientes" class="navegacion_enlace">Clientes</a></li>
+                 <li><a href="/admin/cedulas" class="navegacion_enlace">C&eacute;dulas</a></li>
+                 <li><a href="/cerrar_sesion/" class="navegacion_enlace">Salir</a></li>
+              </ul>
+           </div>
+        </nav>
+     </header>
+    <!-- CSS de admin -->
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    <script src="{% static 'PrestamosTaveras/JS/navegacion-menu.js' %}"></script>
+    <script src="{% static 'PrestamosTaveras/JS/scriptadministrador.js' %}"></script>
+    <script src="{% static 'PrestamosTaveras/JS/imagen.js' %}"></script>
+    <script src="https://kit.fontawesome.com/25da21ab57.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+main {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.contenedor-principal {
+    display: grid;
+    gap: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100%;
+    height: 100vh;
+    background-color: #15FF32;
+}
+
+.administrador {
+    font-size: 22px;
+    font-weight: 800;
+    left: 40%;
+    position: absolute;
+    top: 25%;
+}
+
+.titulo_pagos {
+    font-size: 22px;
+    font-weight: 800;
+    left: 41%;
+    position: fixed;
+    top: 25%;
+}
+
+.titulo_admin_clientes {
+    font-size: 20px;
+    font-weight: 800;
+    left: 2.5%;
+    position: absolute;
+    top: 18%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buscador_cliente {
+    right: 3%;
+    position: absolute;
+    top: 17%;
+}
+
+.input_buscador {
+    width: 225px;
+}
+
+.boton_buscador {
+    background-color: hsl(220, 24%, 12%);
+}
+
+.boton_buscador:hover, .boton_recargar:hover {
+    color: #15FF32;
+}
+
+.boton_recargar {
+    background-color: #515151;
+}
+
+.boton_buscador, .boton_recargar {
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    height: 27px;
+    width: 80px;
+}
+
+.tabla {
+    margin-top: 30px;
+    border-collapse: collapse;
+    height: auto;
+    width: 100%;
+}
+
+.contenedor-tabla {
+	margin: auto;
+    max-width: 80%;
+	width: 100%;
+}
+
+.tabla th {
+    background-color: hsl(220, 24%, 12%);
+    color: #fff;
+}
+
+.tabla td {
+    background-color: #515151;
+    cursor: pointer;
+    color: #15FF32;
+}
+
+.tabla th, .tabla td {
+    border-right: 1px solid #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.tabla_clientes {
+    border-collapse: collapse;
+    height: auto;
+    width: 100%;
+}
+
+.contenedor-tabla-clientes {
+    height: 74.5%;
+    margin: 150px 28px 0px 28px;
+    overflow-y: auto;
+}
+
+.contenedor-tabla-clientes::-webkit-scrollbar-thumb {
+    background-color: #15FF32;
+    border-radius: 15px;
+}
+
+.cabecera-clientes {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.tabla_clientes .dato_clientes {
+    border-bottom: 1px solid #fff;
+}
+
+.tabla_clientes .titulo_clientes, .tabla_clientes .dato_clientes {
+    border-right: 1px solid #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.tabla_clientes th {
+    background-color: hsl(220, 24%, 12%);
+    color: #fff;
+}
+
+.tabla_clientes td {
+    background-color: #515151;
+    cursor: pointer;
+    color: #15FF32;
+}
+
+.tabla_clientes th, .tabla_clientes td {
+    border-right: 1px solid #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.formulario_clientes {
+    width: 90px;
+}
+
+.dato_clientes .eliminar_cliente {
+    background-color: #ff0000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    height: 30px;
+    margin-left: 20px;
+    width: 80px;
+}
+
+.imagen_cedula_tabla {
+    height: 80px;
+    width: 110px;
+}
+
+.contenedor-tabla-pagos {
+    margin-left: 12px;
+}
+
+input, select {
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 4px #d1d9e6;
+    height: 30px;
+    font-size: 13px;
+    letter-spacing: 0.15px;
+    margin-top: 5px;
+    outline: none;
+    padding-left: 20px;
+}
+
+input:focus, select:focus {
+    border: 1px solid #15FF32;
+}
+
+.boton_pagos {
+    background-color: hsl(220, 24%, 12%);
+    border-radius: 25px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    height: 35px;
+    font-size: 17px;
+    font-weight: 700;
+    left: 42.5%;
+    letter-spacing: 1.15px;
+    margin: 40px 10px;
+    position: absolute;
+    text-decoration: none;
+    top: 72%;
+    width: 180px;
+}
+
+.boton-mostrar-modal {
+    background-color: hsl(220, 24%, 12%);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    height: 27px;
+    margin-left: 10px;
+    width: 125px;
+}
+
+.boton-mostrar-modal:hover {
+    color: #15FF32;
+}

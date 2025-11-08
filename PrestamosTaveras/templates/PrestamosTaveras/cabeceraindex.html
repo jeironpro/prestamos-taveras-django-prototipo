@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-DO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}INICIO{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% block icon_url %}/static/PrestamosTaveras/ICONS/iniciar-sesion.png{% endblock %}">
+    {% block styles %}<link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/index.css' %}">{% endblock %}
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'PrestamosTaveras/CSS/mensajes.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="contenedor-principal">
+            <div class="logo-enlace">
+                <div class="logo">
+                    <h1>Pr&eacute;stamos Taveras</h1>
+                    <figure class="contenedor-logo">
+                        <img src="{% static 'PrestamosTaveras/ICONS/billete.png' %}" alt="LOGO" class="icono-logo">
+                    </figure>
+                    {% block enlace %}
+                    <a href="/registrousuario/" class="enlace-reg">Registrarme</a>
+                    {% endblock %}
+                </div>
+            </div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </main>
+    <script src="{% static 'PrestamosTaveras/JS/scriptindex.js' %}"></script>
+    <script src="https://kit.fontawesome.com/25da21ab57.js" crossorigin="anonymous"></script>
+</body>
+</html>

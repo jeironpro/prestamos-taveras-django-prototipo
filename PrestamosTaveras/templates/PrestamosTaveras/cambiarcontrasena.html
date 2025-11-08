@@ -1,0 +1,32 @@
+{% extends 'PrestamosTaveras/cabecerainicioprestamos.html' %}
+    {% block title %}CAMBIAR CONTRASENA{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/cambiar-contrasena.png{% endblock %}
+    {% block enlace %}{% endblock %}
+    {% block content %}
+    <div class="card card2">
+        <a href="/configuraciones/" class="regresar-configuraciones"><span class="flecha-izquierda"><i class="fa-solid fa-chevron-left"></i></span> Regresar</a>
+            <h3 class="titulo-config">Cambiar Contraseña</h3>
+            <form method="post" enctype="multipart/form-data" class="formulario-config">
+                {% csrf_token %}
+                <input type="password" id="contrasena" name="contrasena" placeholder="Actual contraseña" value="" autocomplete="off" class="input-cc">
+
+                <span onclick="mostrar_ocultar('contrasena','icono_mostrar')" class="boton-mostrar-ocultar"><i id="icono_mostrar" class="fa-solid fa-eye-slash"></i></span>
+
+                <input type="password" id="contrasena_" name="contrasena_" placeholder="Nueva contraseña" value="" autocomplete="off" class="input-cc">
+
+                <span onclick="mostrar_ocultar_('contrasena_','icono_mostrar_')" class="boton-mostrar-ocultar_"><i id="icono_mostrar_" class="fa-solid fa-eye-slash"></i></span>
+
+                <input type="password" id="contrasena__" name="contrasena__" placeholder="Confirma contraseña" value="" autocomplete="off" class="input-cc">
+
+                <span onclick="mostrar_ocultar__('contrasena__','icono_mostrar__')" class="boton-mostrar-ocultar__"><i id="icono_mostrar__" class="fa-solid fa-eye-slash"></i></span>
+                <div class="botones">
+                    <button type="submit" class="boton-cc">Cambiar</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            function volver() {
+                console.log("Boton")
+            }
+        </script>
+    {% endblock %}

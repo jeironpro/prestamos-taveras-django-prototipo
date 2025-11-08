@@ -1,0 +1,71 @@
+{% extends 'PrestamosTaveras/cabeceraadministrador.html' %}
+{% load static %}
+    {% block title %}CLIENTES{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/clientes.png{% endblock %}
+    {% block content %}
+        <div class="contenedor-principal">
+            <h1 class="titulo_admin_clientes">Gesti&oacute;n De Clientes</h1>
+            <form action="{% url 'buscador_cliente' %}" id="formulario_buscador_cliente" method="post" enctype="multipart/form-data" class="buscador_cliente">
+                {% csrf_token %}
+                <input type="text" name="buscador_cliente" id="buscador_cliente" oninput="NombreApellidoCedula(this)" placeholder="Nombre y Apellido o C&eacute;dula" autocomplete="off" class="input_buscador">
+                <button type="submit" class="boton_buscador">buscar</button>
+                <button type="button" onclick="nuevaAccion('/admin/clientes/')" class="boton_recargar">Recargar</button>
+            </form>
+            <div class="contenedor-tabla-clientes">
+                <table class="tabla_clientes">
+                    <thead class="cabecera-clientes">
+                        <tr>
+                            <th class="titulo_clientes">#</th>
+                            <th class="titulo_clientes">Nombre y Apellido</th>
+                            <th class="titulo_clientes">C&eacute;dula</th>
+                            <th class="titulo_clientes">Tel&eacute;fono</th>
+                            <th class="titulo_clientes">Direcci&oacute;n</th>
+                            <th class="titulo_clientes">Correo Electr&oacute;nico</th>
+                            <th class="titulo_clientes">Gesti&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if buscador_cliente %}
+                            {% for cliente in buscador_cliente %}
+                            <tr>
+                                <td class="dato_clientes">{{ cliente.id_usuario }}</td>
+                                <td class="dato_clientes">{{ cliente.nombre_apellido }}</td>
+                                <td class="dato_clientes">{{ cliente.cedula }}</td>
+                                <td class="dato_clientes">{{ cliente.telefono }}</td>
+                                <td class="dato_clientes">{{ cliente.direccion }}</td>
+                                <td class="dato_clientes">{{ cliente.correo_electronico }}</td>
+                                <td class="dato_clientes gestion">
+                                    <form action="{% url 'eliminarcliente' %}" method="post" enctype="multipart/form-data" class="formulario_clientes">
+                                        {% csrf_token %}
+                                        <button type="submit" class="eliminar_cliente">
+                                            <input type="hidden" id="id_cliente" name="id_cliente" value="{{ cliente.id_usuario }}"> Eliminar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            {% for cliente in clientes %}
+                            <tr>
+                                <td class="dato_clientes">{{ cliente.id_usuario }}</td>
+                                <td class="dato_clientes">{{ cliente.nombre_apellido }}</td>
+                                <td class="dato_clientes">{{ cliente.cedula }}</td>
+                                <td class="dato_clientes">{{ cliente.telefono }}</td>
+                                <td class="dato_clientes">{{ cliente.direccion }}</td>
+                                <td class="dato_clientes">{{ cliente.correo_electronico }}</td>
+                                <td class="dato_clientes gestion">
+                                    <form action="{% url 'eliminarcliente' %}" method="post" enctype="multipart/form-data" class="formulario_clientes">
+                                        {% csrf_token %}
+                                        <button type="submit" class="eliminar_cliente">
+                                            <input type="hidden" id="id_cliente" name="id_cliente" value="{{ cliente.id_usuario }}"> Eliminar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endblock %}

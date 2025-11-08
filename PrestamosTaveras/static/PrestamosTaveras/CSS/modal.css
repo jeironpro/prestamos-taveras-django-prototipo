@@ -1,0 +1,134 @@
+/* MODAL DIRECCION */
+.modal-direccion {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(68%, -50%);
+    padding: 20px;
+    background-color: #187300;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+.solpres {
+    transform: translate(100%, -40%);
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.input-direccion-modal {
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 4px #d1d9e6;
+    display: flex;
+    height: 40px;
+    font-size: 13px;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.15px;
+    margin-top: 5px;
+    outline: none;
+    padding-left: 20px;
+    width: 200px;
+}
+
+.boton-modal-centrar {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.boton-modal {
+    background-color:  #5fca78;
+    border-radius: 15px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0px 10px;
+    letter-spacing: 1.15px;
+    text-decoration: none;
+    width: 100px;
+}
+
+.boton-modal:hover {
+    background-color: #03c931;
+}
+
+/* MODAL CEDULA */
+.modal-cedula {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    padding: 20px;
+    background-color: hsl(220, 24%, 12%);
+    border: 1px solid #ccc;
+    z-index: 3;
+}
+
+.input-num-cedula-modal {
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 4px #d1d9e6;
+    display: flex;
+    height: 40px;
+    font-size: 13px;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.15px;
+    margin-top: 5px;
+    outline: none;
+    padding-left: 20px;
+    width: 200px;
+}
+
+.input-cedula-modal {
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 4px #d1d9e6;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    height: 300px;
+    letter-spacing: 0.15px;
+    outline: none;
+    padding: 0px;
+    width: 440px;
+}
+
+.boton-cedula-modal {
+    background-color:  #187300;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    height: 35px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0px 10px;
+    letter-spacing: 1.15px;
+    text-decoration: none;
+    width: 140px;
+}
+
+.boton-cedula-modal:hover {
+    background-color: #03c931;
+    color: #000;
+}

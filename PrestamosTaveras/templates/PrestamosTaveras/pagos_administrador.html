@@ -1,0 +1,55 @@
+{% extends 'PrestamosTaveras/cabeceraadministrador.html' %}
+{% load static %}
+    {% block title %}PAGOS{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/pagos-admin.png{% endblock %}
+    {% block content %}
+        <div class="contenedor-principal">
+            <h1 class="titulo_pagos">Gestion de Pagos</h1>
+            <div class="contenedor-tabla contenedor-tabla-pagos">
+                <form method="post" enctype="multipart/form-data" id="formulario-completo">
+                    {% csrf_token %}
+                    <input type="hidden" name="usuario" id="usuario" value="{{ usuario }}">
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>C&eacute;dula</th>
+                                <th>Monto Pagado</th>
+                                <th>Cuotas Pagadas</th>
+                                <th>R&eacute;dito</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select name="nombre_apellido" id="nombre_apellido" autocomplete="off" onchange="guardarSeleccion()">
+                                        <option selected>sel. cliente</option>
+                                        {% for usuario in usuarios %}
+                                        <option value="{{ usuario }}">{{ usuario }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" id="cedula" name="cedula" maxlength="13" placeholder="introduzca la c&eacute;dula" autocomplete="off" oninput="agregarGuionesCedula(this)">
+                                </td>
+                                <td>
+                                    <input type="text" id="monto_pagado" name="monto_pagado" placeholder="RD$"  autocomplete="off">
+                                </td>
+                                <td>
+                                    <input type="text" id="cuotas_pagadas" name="cuotas_pagadas" placeholder="0"  autocomplete="off">
+                                </td>
+                                <td>
+                                    <input type="text" id="redito" name="redito" placeholder="RD$"  autocomplete="off">
+                                </td>
+                                <td>
+                                    <input type="date" id="fecha" name="fecha" autocomplete="off">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="boton_pagos" onclick="enviarFormulario()">Realizar Pago</button>
+                </form>
+            </div>
+        </div>
+    {% endblock %}

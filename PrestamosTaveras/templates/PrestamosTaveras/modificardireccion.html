@@ -1,0 +1,18 @@
+{% extends 'PrestamosTaveras/cabecerainicioprestamos.html' %}
+    {% block title %}MODIFICAR DIRECCI&Oacute;N{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/modificar-direccion.png{% endblock %}
+    {% block enlace %}{% endblock %}
+    {% block content %} 
+        <div class="card card2">
+            <a href="/configuraciones/" class="regresar-configuraciones"><span class="flecha-izquierda"><i class="fa-solid fa-chevron-left"></i></span> Regresar</a>
+            <h3 class="titulo-config">Modificar direcci&oacute;n</h3>
+            <form method="post" enctype="multipart/form-data" class="formulario-config">
+                {% csrf_token %}
+                <input type="text" id="calle" name="calle" placeholder="Calle" value="" autocomplete="off" class="input-cd">
+                <input type="text" id="casa" name="casa" placeholder="Casa" autocomplete="off" class="input-cd">
+                <input type="text" id="sector" name="sector" placeholder="Sector" autocomplete="off" class="input-cd">
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" class="input-cd">
+                <button type="submit" class="boton-cd">Cambiar</button>
+            </form>
+        </div>
+    {% endblock %}

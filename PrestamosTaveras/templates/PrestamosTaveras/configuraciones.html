@@ -1,0 +1,19 @@
+{% extends 'PrestamosTaveras/cabecerainicioprestamos.html' %}
+    {% block title %}CONFIGURACIONES{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/configuraciones.png{% endblock %}
+    {% block enlace %}<a href="/inicioprestamos/" class="solicitar"><span class="flecha-izquierda"><i class="fa-solid fa-chevron-left"></i></span> Regresar</a>{% endblock %}
+    {% block content %}
+        <div class="card card2">
+            <h3 class="titulo-conf">Configuraciones</h3>
+            <div class="enlaces-conf">
+                <a href="/cambiarcontrasena/" class="enlace-cc">Cambiar Contraseña</a>
+                <a href="/cambiarcorreoelectronico/" class="enlace-cce">Cambiar Correo Electr&oacute;nico</a>
+                <a href="/modificardireccion/" class="enlace-cd">Modificar Direcci&oacute;n</a>
+                <a href="/modificartelefono/" class="enlace-ct">Modificar Tel&eacute;fono</a>
+                <form action="/eliminarcuenta/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" class="enlace-ct">Eliminar Cuenta</button>
+                </form>
+            </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'PrestamosTaveras/cabeceraindex.html' %}       
+{% load static %} 
+        {% block content %}
+            <div class="contenedor-formulario">
+                <a href="/manualdeuso/">
+                    <img src="{% static 'PrestamosTaveras/ICONS/manual-usuario.png' %}" alt="MANUAL" class="manual">
+                </a>
+                <form method="post" enctype="multipart/form-data" class="formulario">
+                    {% for mensaje in messages %}
+                        <div class="alert-index alert-danger" role="alert">
+                                <span aria-hidden="true">{{ mensaje }}</span>
+                        </div>
+                    {% endfor %}
+                    {% csrf_token %}
+                    <h2 class="titulo-formulario">Inicio De Sesi&oacute;n</h2>
+                    <div class="contenedor-input-index">
+                        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Correo Electr&oacute;nico" value="" autocomplete="off" class="input">
+                    </div>
+                    <div class="contenedor-input-index">
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" value="" autocomplete="off" class="input">
+                        <span onclick="mostrar_ocultar()" class="boton-mostrar-ocultar"><i id="icono_mostrar" class="fa-solid fa-eye-slash"></i></span>
+                    </div>
+                    <a href="/olvidastetucontrasena/" class="enlace-olvcon">Olvidaste tu contraseña?</a>
+                    <div class="botones">
+                        <button type="submit" class="boton">Iniciar</button>
+                    </div>
+                </form>
+                <div class="redes">
+                    <div class="icoredso">
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                    <div class="icoredso">
+                        <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                    <div class="icoredso">
+                        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <div class="icoredso">
+                        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}

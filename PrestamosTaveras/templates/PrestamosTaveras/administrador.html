@@ -1,0 +1,33 @@
+{% extends 'PrestamosTaveras/cabeceraadministrador.html' %}
+{% load static %}
+    {% block content %}
+        <div class="contenedor-principal">
+            <h1 class="administrador">¡Hola Administrador!</h1>
+            <div class="contenedor-tabla">
+                <table class="tabla tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>Pr&eacute;stamos</th>
+                            <th>Prestados / Cobrados</th>
+                            <th>Ganancias / Cobradas</th>
+                            <th>Ganancias Restantes</th>
+                            <th>Total Prestado + Ganancias</th>
+                            <th>Total Cobrados + Cobradas</th>
+                            <th>R&eacute;ditos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ prestamos_activos }}</td>
+                            <td>RD${{ total_prestado }} / RD${{ cobrados }}</td>
+                            <td>RD${{ ganancias }} / RD${{ cobradas }}</td>
+                            <td>RD${{ ganancias_restantes }}</td>
+                            <td>RD${{ total_prestado_ganancias }}</td>
+                            <td>RD${{ total_cobrados_cobradas }}</td>
+                            <td>RD${{ reditos }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endblock %}

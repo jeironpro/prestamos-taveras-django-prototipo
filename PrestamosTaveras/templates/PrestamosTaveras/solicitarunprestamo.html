@@ -1,0 +1,56 @@
+{% extends 'PrestamosTaveras/cabecerainicioprestamos.html' %}
+{% load static %}
+    {% block title %}SOLICITAR PR&Eacute;STAMO{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/pedir-prestado.png{% endblock %}
+    {% block enlace %}<a href="/inicioprestamos/" class="solicitar"><span class="flecha-izquierda"><i class="fa-solid fa-chevron-left"></i></span> Regresar</a>{% endblock %}
+    {% block content %}
+        <div class="card card2">
+            <h3 class="titulo-sol-pres">Solicitar Pr&eacute;stamo</h3>
+            {% if verificar_id_prestamo == 0 %}
+            <p class="informacion-sol-pres">-El monto maximo en su pr&eacute;stamo incial es de RD$10,000</p>
+            {% else %}
+            {% endif %}
+            <form method="post" enctype="multipart/form-data" id="fomulario_sol_pres" class="sol-pres-formulario">
+                {% csrf_token %}
+                <input type="text" id="cantidad" name="cantidad" placeholder="Cantidad que desea solicitar" autocomplete="off" value="" oninput="soloNumeros(this)" class="input-sol-pres">
+
+                <select name="cuotas" id="cuotas" class="input-sol-pres">
+                    <option value="" disabled selected>Cuotas que desea pagar</option>
+                </select>
+                
+                <input type="text" id="monto" name="monto" placeholder="Monto de cada cuota" autocomplete="off" class="input-sol-pres" readonly>
+
+                <input type="email" name="correo_electronico" id="correo_electronico" placeholder="Confirme su correo electr&oacute;nico" autocomplete="off" value="" class="input-sol-pres">
+
+                <input type="text" id="direccion" name="direccion" placeholder="Confirme su direcci&oacute;n" autocomplete="off" value="" onfocus="mostrarModal()" class="input-sol-pres">
+
+                <input type="text" id="telefono" name="telefono" maxlength="12" placeholder="Confirme su n&uacute;mero" autocomplete="off" value="" oninput="guionesTelefono(this)" class="input-sol-pres">
+
+                <button type="submit" class="boton-sol-pres">Solicitar</button>
+            </form>
+        </div>
+        <div id="modalDireccion" class="modal-direccion solpres">
+            <form id="modalFormulario">
+                <input type="text" name="calle" id="calle" placeholder="calle" autocomplete="off" class="input-direccion-modal" autofocus>
+                <input type="text" name="casa" id="casa" placeholder="casa o apartamento" autocomplete="off" class="input-direccion-modal">
+                <input type="text" name="sector" id="sector" placeholder="sector" autocomplete="off" class="input-direccion-modal">
+                <input type="text" name="ciudad" id="ciudad" placeholder="ciudad" autocomplete="off" class="input-direccion-modal">
+                <div class="boton-modal-centrar">
+                    <button onclick="cerrarModal()" type="button" id="boton_modal" class="boton-modal">Establecer</button>
+                </div>
+            </form>
+        </div>
+        <div id="modalOverlay" class="modal-overlay" onclick="cerrarModal()"></div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var menu = document.getElementById('cuotas');
+
+                for (var i = 1; i <= 10; i++) {
+                    var opcion = document.createElement("option");
+                    opcion.value = i;
+                    opcion.text = i;
+                    menu.add(opcion);
+                }
+            });
+        </script>
+    {% endblock %}

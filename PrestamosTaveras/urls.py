@@ -1,0 +1,33 @@
+from django.urls import path
+from PrestamosTaveras import views
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    path('registrousuario/', views.registro_usuario, name="registrousuario"),
+    path('activador/<uidb64>/<token>', views.activador, name='activador'),
+    path('eliminarregistro/<uidb64>/<token>', views.eliminarregistro, name='eliminarregistro'),
+    path('olvidastetucontrasena/', views.olvidastetucontrasena, name="olvidastetucontrasena"),
+    path('recuperartucontrasena/<token>', views.recuperartucontrasena, name="recuperartucontrasena"),
+    path('verificacionOTP/', views.verificacionOTP, name="verificacionOTP"),
+    path('inicioprestamos/', views.inicioprestamos, name="inicioprestamos"),
+    path('solicitarprestamo/', views.solicitarprestamo, name="solicitarprestamo"),
+    path('aprobacionprestamo', views.aprobacionprestamo, name="aprobacionprestamo"),
+    path('denegarprestamo', views.denegarprestamo, name="denegarprestamo"),
+    path('misdatos/', views.misdatos, name="misdatos"),
+    path('pagos/', views.pagos, name="pagos"),
+    path('configuraciones/', views.configuraciones, name="configuraciones"),
+    path('cerrar_sesion/', views.cerrar_sesion, name="cerrar_sesion"),
+    path('cambiarcontrasena/', views.cambiarcontrasena, name="cambiarcontrasena"),
+    path('cambiarcorreoelectronico/', views.cambiarcorreoelectronico, name="cambiarcorreoelectronico"),
+    path('modificardireccion/', views.modificardireccion, name="modificardireccion"),
+    path('modificartelefono/', views.modificartelefono, name="modificartelefono"),
+    path('eliminarcuenta/', views.eliminarcuenta, name="eliminarcuenta"),
+    path('admin/', views.administrador, name="admin"),
+    path('admin/pagosadministrador/', views.pagosadministrador, name="pagosadministrador"),
+    path('admin/clientes/', views.clientes, name="clientes"),
+    path('buscador_cliente/', views.buscador_cliente, name="buscador_cliente"),
+    path('eliminarcliente/', views.eliminarcliente, name="eliminarcliente"),
+    path('admin/cedulas/', views.cedulas, name="cedulas"),
+    path('buscador_cedula/', views.buscador_cedula, name="buscador_cedula"),
+    path('manualdeuso/', views.manualdeuso, name="manualdeuso"),
+]

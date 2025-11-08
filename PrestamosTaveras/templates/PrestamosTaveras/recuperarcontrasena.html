@@ -1,0 +1,32 @@
+{% extends 'PrestamosTaveras/cabeceraindex.html' %}
+{% load static %}
+    {% block title %}RESTABLECER CONTRASEÑA{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/recuperar-contrasena.png{% endblock %}
+    {% block enlace %}{% endblock %}
+        {% block content %}
+            <div class="contenedor-formulario">
+                <form method="post" enctype="multipart/form-data" class="formulario">
+                    {% for mensaje in messages %}
+                        <div class="alert-index alert-danger" role="alert">
+                                <span aria-hidden="true">{{ mensaje }}</span>
+                        </div>
+                    {% endfor %}
+                    {%  csrf_token %}
+                    <h2 class="titulo-formulario">Restablecer Contraseña</h2>
+                    <span class="informacion-con">-La contraseña debe tener al menos 8 caracteres</span>
+                    <span class="informacion-con">-No utilizar contraseñas poco seguras</span>
+                    <div class="contenedor-input-index">
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Nueva Contraseña" value="" autocomplete="off" class="input">
+                        <span onclick="mostrar_ocultar('contrasena','icono_mostrar')" class="boton-mostrar-ocultar_rc"><i id="icono_mostrar" class="fa-solid fa-eye-slash"></i></span>
+                    </div>
+                    <div class="contenedor-input-index">
+                        <input type="password" id="contrasena_" name="contrasena_" placeholder="Confirmar Contraseña" value="" autocomplete="off" class="input">
+                        <span onclick="mostrar_ocultar_('contrasena_','icono_mostrar_')" class="boton-mostrar-ocultar_rc_"><i id="icono_mostrar_" class="fa-solid fa-eye-slash"></i></span>
+                    </div>
+                    <div class="botones">
+                        <a href="/olvidastetucontrasena/" class="enlace-regresar">Regresar</a>
+                        <button type="submit" class="boton">Restablecer</button>
+                    </div>
+                </form>
+            </div>
+        {% endblock %}

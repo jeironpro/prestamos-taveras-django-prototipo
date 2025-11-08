@@ -1,0 +1,16 @@
+{% extends 'PrestamosTaveras/cabecerainicioprestamos.html' %}
+    {% block title %}MODIFICAR TEL&Eacute;FONO{% endblock %}
+    {% block icon_url %}/static/PrestamosTaveras/ICONS/modificar-telefono.png{% endblock %}
+    {% block enlace %}{% endblock %}
+    {% block content %} 
+        <div class="card card2">
+            <a href="/configuraciones/" class="regresar-configuraciones"><span class="flecha-izquierda"><i class="fa-solid fa-chevron-left"></i></span> Regresar</a>
+            <h3 class="titulo-config">Modificar Tel&eacute;fono</h3>
+            <form method="post" enctype="multipart/form-data" class="formulario-config">
+                {% csrf_token %}
+                <input type="text" id="telefono" name="telefono" placeholder="Nuevo tel&eacute;fono" value="" autocomplete="off" maxlength="12" oninput="guionesTelefono(this)" class="input-ct">
+                <input type="text" id="telefono_" name="telefono_" placeholder="Confirmar tel&eacute;fono" value="" autocomplete="off" maxlength="12" oninput="guionesTelefono(this)" class="input-ct">
+                <button type="submit" class="boton-ct">Cambiar</button>
+            </form>
+        </div>
+    {% endblock %}
